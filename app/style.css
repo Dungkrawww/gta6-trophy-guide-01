@@ -1,7 +1,90 @@
-body { font-family: Arial, sans-serif; margin: 24px; color: #222; }
-header { display: flex; justify-content: space-between; align-items: baseline; }
-.controls { display: flex; gap: 16px; margin: 12px 0; align-items: center; }
-.import input { font-size: 12px; }
-table { border-collapse: collapse; width: 100%; }
-th, td { border-bottom: 1px solid #ddd; padding: 6px 8px; text-align: left; vertical-align: top; white-space: pre-line; }
-th { background: #f2f2f2; }
+/* Leonida Platinum — light paper look. One theme, system fonts only, no network. */
+:root {
+  --paper: #f6f3ee; --card: #ffffff; --ink: #1d2129; --muted: #626a75;
+  --line: #ddd5c7; --accent: #d24e2a; --accent-soft: #fbe9e2;
+  --gold: #b98a1d; --silver: #6e7681; --bronze: #9a6b3f; --plat: #4a6fa5;
+  --good: #2e7d32;
+}
+* { box-sizing: border-box; }
+body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: var(--paper); color: var(--ink); margin: 0; padding: 0 28px 40px; font-size: 15px; line-height: 1.45; }
+h1, h2, h3 { font-family: "Iowan Old Style", Palatino, Georgia, serif; margin: 0; }
+h2 { font-size: 26px; margin: 6px 0 4px; }
+h3 { font-size: 18px; }
+.top { display: flex; justify-content: space-between; gap: 24px; padding: 22px 0 14px; border-bottom: 3px solid var(--ink); align-items: flex-start; flex-wrap: wrap; }
+.top h1 { font-size: 38px; letter-spacing: .2px; }
+.subtitle { margin: 2px 0 6px; color: var(--muted); font-size: 15px; }
+.composition { margin: 0; font-size: 14px; max-width: 640px; }
+.progressbox { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 18px; min-width: 300px; }
+.bigcount { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 40px; line-height: 1; }
+.bigcount .of { font-size: 22px; color: var(--muted); }
+.bar { height: 10px; background: #e8e2d5; border-radius: 6px; margin: 8px 0 6px; overflow: hidden; }
+.bar .fill { height: 100%; background: var(--accent); border-radius: 6px; }
+.progressline, .gradeline { margin: 2px 0; font-size: 13px; }
+.gradeline { color: var(--muted); }
+.tabs { display: flex; gap: 8px; margin: 16px 0 0; flex-wrap: wrap; }
+.tab { border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 6px; padding: 9px 16px; font-size: 15px; cursor: pointer; }
+.tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.pill { background: var(--accent); color: #fff; border-radius: 10px; padding: 1px 8px; font-size: 12px; }
+.toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 14px 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; }
+.field { font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 2px; }
+.field input, .field select { font: inherit; color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; background: #fff; }
+.field input[type="search"] { width: 200px; }
+.spoiler { font-size: 13px; display: flex; gap: 6px; align-items: center; max-width: 260px; }
+.spacer { flex: 1; }
+button { font: inherit; border: 1px solid var(--ink); background: var(--ink); color: #fff; border-radius: 6px; padding: 7px 12px; cursor: pointer; }
+button.quiet { background: transparent; color: var(--ink); border-color: var(--line); }
+.importbtn { border: 1px solid var(--ink); background: transparent; color: var(--ink); border-radius: 6px; padding: 7px 12px; cursor: pointer; font-size: 15px; }
+.importbtn input { display: none; }
+.hidden { display: none !important; }
+.lede { color: var(--muted); max-width: 820px; margin: 0 0 16px; }
+.note { color: var(--muted); font-size: 13px; }
+.split { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 18px; align-items: start; }
+.listsummary { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+.trophylist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.trophylist li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.trophylist li.selected { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.trophylist li.earned { background: #f3f7f0; }
+.trophylist input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); flex: none; }
+.trophybody { min-width: 0; }
+.trophyname { font-weight: 700; font-size: 15px; }
+.trophydesc { color: var(--muted); font-size: 13px; margin: 1px 0 4px; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; font-size: 11px; }
+.tag { border-radius: 10px; padding: 1px 8px; border: 1px solid var(--line); color: var(--muted); }
+.tag.platinum { background: #e8eef7; color: var(--plat); border-color: #c3d2e8; font-weight: 700; }
+.tag.gold { background: #f7ecd2; color: var(--gold); border-color: #e5cf9a; font-weight: 700; }
+.tag.silver { background: #eceff1; color: var(--silver); border-color: #d4d9de; font-weight: 700; }
+.tag.bronze { background: #f5e6d8; color: var(--bronze); border-color: #e3c9a8; font-weight: 700; }
+.tag.missable { background: var(--accent-soft); color: var(--accent); border-color: #f0c4b2; font-weight: 700; }
+.tag.counter { background: #eef3ee; color: var(--good); border-color: #cfe0cf; font-weight: 700; }
+.detail { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; position: sticky; top: 12px; }
+.detail h3 { font-size: 22px; margin-bottom: 2px; }
+.detail .desc { color: var(--muted); font-style: italic; margin: 0 0 10px; }
+.detail p { margin: 8px 0; }
+.detail ol { margin: 6px 0; padding-left: 20px; }
+.detail ol li { margin: 3px 0; }
+.detail .warn { background: var(--accent-soft); border-left: 4px solid var(--accent); padding: 8px 10px; border-radius: 0 6px 6px 0; }
+.detail .sources { font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+.detail .counterbox { display: flex; gap: 8px; align-items: center; background: #f2f6f2; border: 1px solid #cfe0cf; border-radius: 6px; padding: 8px 10px; margin: 8px 0; }
+.counterbox button { padding: 2px 12px; font-size: 16px; }
+.counterbox .count { font-weight: 700; font-size: 17px; min-width: 90px; text-align: center; }
+.detail textarea { width: 100%; min-height: 56px; font: inherit; border: 1px solid var(--line); border-radius: 6px; padding: 8px; resize: vertical; }
+.detail .hint { font-size: 12px; color: var(--muted); }
+.roadmap { display: flex; flex-direction: column; gap: 12px; max-width: 900px; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
+.phase h3 { font-size: 20px; }
+.phase .goal { font-weight: 700; margin: 4px 0; }
+.phase .pbar { height: 8px; background: #e8e2d5; border-radius: 6px; overflow: hidden; margin: 6px 0; }
+.phase .pbar div { height: 100%; background: var(--accent); }
+.phase p { margin: 4px 0; }
+.missables { display: flex; flex-direction: column; gap: 10px; max-width: 900px; }
+.missable { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 14px; padding: 12px 16px; }
+.missable h3 { font-size: 18px; }
+.missable p { margin: 4px 0; }
+.planner { max-width: 900px; margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.planner li { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; display: flex; gap: 12px; align-items: baseline; cursor: pointer; }
+.planner .rank { font-family: "Iowan Old Style", Palatino, Georgia, serif; font-size: 22px; color: var(--accent); min-width: 28px; }
+.planner .why { color: var(--muted); font-size: 13px; }
+footer { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 12px; font-size: 13px; color: var(--muted); max-width: 900px; }
+.fineprint { font-size: 12px; }
+.empty { color: var(--muted); padding: 18px; }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } .detail { position: static; } body { padding: 0 14px 30px; } }
