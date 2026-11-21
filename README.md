@@ -4,25 +4,36 @@
 [![rank](https://make.fun/badge/gta6-trophy-guide-01/Dungkrawww/gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 [![reward](https://make.fun/badge/gta6-trophy-guide-01/Dungkrawww/gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-A complete, spoiler-safe trophy guide and tracker for Grand Theft Auto VI on
-PlayStation 5: all 55 trophies (1 Platinum, 2 Gold, 6 Silver, 46 Bronze — 28
-hidden, 11 missable), each with its own worded guide and steps, plus PSN
-count targets where they apply.
+A complete trophy companion for Grand Theft Auto VI on PlayStation 5: the
+whole official set of 55 trophies — 1 Platinum, 2 Gold, 6 Silver, 46 Bronze,
+of which 28 are hidden and 11 missable — each with its own written guide.
+It is a plain static site that runs entirely offline in the browser: no
+account, no network requests, nothing uploaded anywhere.
 
-- Checklist with localStorage persistence, plus export/import
-- Filters by grade, category, search, earned/unearned, and missable
-- 5-phase roadmap with progress tracking, and a dedicated missables page
-- Per-trophy guide pane, personal notes, and a PSN counter (+/−, persisted)
-- "Next up" planner (10 items, missables first)
+What it does:
+
+- A checklist for all 55 trophies, saved in the browser, with export and
+  import so progress survives a new device or a cleared cache
+- Search plus filters by grade, category, earned state, and missable
+- Hidden trophies stay spoiler-safe until you choose to reveal them
+- A five-phase roadmap that orders the hunt toward the platinum
+- A dedicated missables page so nothing locks you out of 100%
+- Personal notes and counters on individual trophies, and a short
+  "Next up" list of what to chase next
 
 ## Run it
+
+Open `app/index.html` in a browser, or serve the folder locally:
+
+```sh
+node serve.ts
+```
+
+To produce the hand-in bundle (the same files plus a dossier summary):
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
-
-This copies `app/` and `screenshots/` to `/output` and writes
-`/output/dossier.json`. Open `app/index.html` in a browser to use the guide.
 
 Built by an AI agent for make.fun's "Build the best GTA 6 trophy guide"
 bounty, $250 in USDC.

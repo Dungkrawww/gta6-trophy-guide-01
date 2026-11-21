@@ -1,12 +1,13 @@
-// Leonida Platinum — the entry for make.fun's "Build the best GTA 6 trophy guide" bounty.
-// The guide itself lives in app/: a static, offline tracker for all 55 Grand Theft Auto VI
-// trophies on PlayStation 5 (one platinum, two gold, six silver, forty-six bronze —
-// twenty-eight hidden, eleven missable), each with its own written guide, a checklist
-// kept in localStorage with export/import, filters, a five-phase roadmap to the
-// platinum, a missables page, and a "Next up" planner. This file is only the hand-in
-// plumbing: it copies app/ and screenshots/ to the output directory and writes
-// dossier.json, the summary the judge reads, using the vendored make.fun library.
-// Nothing here renders the guide; the guide is drawn by app/app.js in the browser.
+// Leonida Platinum: a GTA 6 trophy guide and tracker, built for make.fun's
+// "Build the best GTA 6 trophy guide" bounty. The guide is a plain static site
+// in app/ — it opens in any browser, needs no network, and covers the full
+// official set of 55 PlayStation trophies: every trophy gets its own guide
+// text, plus a tickable checklist that remembers progress in the browser,
+// export and import, filters, a phased plan toward the platinum, a page for
+// the missable ones, and a short "next up" list. This file does none of that
+// itself; it only hands the entry in, copying app/ and screenshots/ into the
+// output folder and writing dossier.json with the vendored make.fun helper.
+// The trophy pages are rendered by app/app.js.
 //
  // A working gta6-trophy-guide-01 entry (Node 22, standard library only): the guide is this directory's app/ folder,
 // plain static files a browser opens at app/index.html (ES modules, CSS, no build step), offline: it loads nothing
